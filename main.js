@@ -81,9 +81,9 @@ const resetbut = document.querySelector('#reset-button')
  * CLICK HANDLERS *'
  ******************/
 
-const textNull = (text,text2) => {
-text.innerHTML = ''
-text2.innerHTML = ''
+const text = (text,text2,text3 = '',text4 = '') => {
+text.innerHTML = text3
+text2.innerHTML = text4
 }
 function financial(x) {
   return Number.parseFloat(x).toFixed(2);
@@ -94,9 +94,8 @@ function financial(x) {
 const sixRoll = () => {
   let num = getRandomNumber(6)
   sixes.push(num)
-  sixMean.innerHTML = financial((mean(sixes)))
-  sixMedian.innerHTML = financial(median(sortByNumber(sixes)))
-diceOne.src = `images/d6/${num}.png`
+  text(sixMean,sixMedian,financial((mean(sixes))),financial(median(sortByNumber(sixes))))
+  diceOne.src = `images/d6/${num}.png`
 }
 
 const sixDouble = () => {
@@ -104,8 +103,7 @@ const sixDouble = () => {
   let numTwo = getRandomNumber(6)
   doubleSixes.push(num)
   doubleSixes.push(numTwo)
-  doubleMean.innerHTML = financial((mean(doubleSixes)))
-  doubleMedian.innerHTML = financial(median(sortByNumber(doubleSixes)))
+  text(doubleMean,doubleMedian,financial((mean(doubleSixes))),financial(median(sortByNumber(doubleSixes))))
   diceTwo.src = `images/d6/${num}.png`
   diceTwoTwo.src = `images/d6/${numTwo}.png`
 }
@@ -115,8 +113,7 @@ const twelveRoll = () => {
 
   let num= getRandomNumber(12)
   twelves.push(num)
-  twelMean.innerHTML = financial((mean(twelves)))
-  twelMedian.innerHTML = financial(median(sortByNumber(twelves)))
+  text(twelMean,twelMedian,financial((mean(twelves))),financial(median(sortByNumber(twelves))))
   dicetwel.src = `images/numbers/${num}.png`
 }
 
@@ -124,8 +121,7 @@ const twelveRoll = () => {
 const twentyRoll = () => {
   let num = getRandomNumber(20)
   twenties.push(num)
-  twentyMean.innerHTML = financial((mean(twenties)))
-  twentyMedian.innerHTML = financial(median(sortByNumber(twenties)))
+text(twentyMean,twentyMedian,financial((mean(twenties))),financial(median(sortByNumber(twenties))))
   dicetwenty.src = `images/numbers/${num}.png`
 }
 
@@ -140,10 +136,10 @@ const reset = () => {
  diceTwoTwo.src = `images/start/d6.png`
  dicetwel.src = `images/start/d12.jpeg`
  dicetwenty.src = `images/start/d20.jpg`
-textNull(sixMean,sixMedian)
-textNull(doubleMean,doubleMedian)
-textNull(twelMean,twelMedian)
-textNull(twentyMean,twentyMedian)
+text(sixMean,sixMedian)
+text(doubleMean,doubleMedian)
+text(twelMean,twelMedian)
+text(twentyMean,twentyMedian)
 
 
 }
